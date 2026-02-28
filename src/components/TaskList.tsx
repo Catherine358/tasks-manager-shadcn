@@ -10,7 +10,7 @@ type TaskListProps = {
 export default function TaskList({ tasks }: TaskListProps) {
 
     return (
-        <ul className="list-none py-4 px-2 flex flex-col gap-3 rounded-xl shadow-sm">
+        <ul className="list-none py-4 px-2 flex flex-col gap-3 rounded-xl">
             {tasks.map((task) => (
                 <TaskItem key={task.id} task={task} />
             ))}

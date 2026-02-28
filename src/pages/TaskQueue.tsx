@@ -2,6 +2,7 @@
 import {useQuery} from "@tanstack/react-query";
 import {getTasks} from "../api/tasks.ts";
 import TaskList from "../components/TaskList.tsx";
+import TaskStatistics from "../components/TaskStatistics.tsx";
 
 export default function TaskQueue() {
     const { data: tasks = [] } = useQuery({
@@ -14,6 +15,9 @@ export default function TaskQueue() {
             <h1 className="text-2xl font-semibold">Task Queue</h1>
             <section className="flex-1">
                 <TaskList tasks={tasks} />
+            </section>
+            <section className="flex justify-start">
+                <TaskStatistics tasks={tasks} />
             </section>
             </main>
     );
