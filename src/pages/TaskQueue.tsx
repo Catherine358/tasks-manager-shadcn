@@ -4,6 +4,10 @@ import {getTasks} from "../api/tasks.ts";
 import TaskList from "../components/TaskList.tsx";
 import TaskStatistics from "../components/TaskStatistics.tsx";
 import TaskCounter from "../components/TaskCounter.tsx";
+import {useSearchParams} from "react-router-dom";
+import FilterBar, {type FilterKeys} from "../components/FilterBar.tsx";
+
+
 
 export default function TaskQueue() {
     const { data: tasks = [] } = useQuery({
@@ -11,14 +15,25 @@ export default function TaskQueue() {
         queryFn: getTasks
     });
 
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const filter = (searchParams.get('filter') as FilterKeys) ?? 'all';
+
+    const handleFilterChange = (filter: FilterKeys) => {
+        setSearchParams({ filter });
+    };
+
+    const filteredTasks = filter === 'all' ? tasks : tasks.filter((task) => task.status === filter);
+
     return (
         <main className="p-6 flex flex-col gap-6">
             <h1 className="text-2xl font-semibold">Task Queue</h1>
             <section className="flex justify-center">
                 <TaskCounter tasks={tasks} />
             </section>
+            <FilterBar activeFilter={filter} onFilterChange={handleFilterChange} />
             <section className="flex-1">
-                <TaskList tasks={tasks} />
+                <TaskList tasks={filteredTasks} />
             </section>
             <section className="flex justify-start">
                 <TaskStatistics tasks={tasks} />
