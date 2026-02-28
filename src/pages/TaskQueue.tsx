@@ -10,9 +10,9 @@ export default function TaskQueue() {
     });
 
     return (
-        <main >
-            <h1>Task Queue</h1>
-            <section>
+        <main className="p-6 flex flex-col gap-6">
+            <h1 className="text-2xl font-semibold">Task Queue</h1>
+            <section className="flex-1">
                 <TaskList tasks={tasks} />
             </section>
             </main>
