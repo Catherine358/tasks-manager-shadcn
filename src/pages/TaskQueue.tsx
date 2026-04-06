@@ -5,6 +5,7 @@ import TaskStatistics from "../components/TaskStatistics.tsx";
 import TaskCounter from "../components/TaskCounter.tsx";
 import {useSearchParams} from "react-router-dom";
 import FilterBar, {type FilterKeys} from "../components/FilterBar.tsx";
+import WeatherWidget from "../components/WeatherWidget.tsx";
 
 export default function TaskQueue() {
     const { data: tasks = [] } = useQuery({
@@ -25,8 +26,9 @@ export default function TaskQueue() {
     return (
         <main className="p-6 flex flex-col gap-6">
             <h1 className="text-2xl font-semibold">Task Queue</h1>
-            <section className="flex justify-center">
+            <section className="flex justify-center gap-4">
                 <TaskCounter tasks={tasks} />
+                <WeatherWidget />
             </section>
             <FilterBar activeFilter={filter} onFilterChange={handleFilterChange} />
             <section className="flex-1">

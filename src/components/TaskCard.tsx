@@ -14,7 +14,7 @@ export default function TaskCard({ task, tasks }: { task: Task; tasks: Task[] })
     const mutation = useMutation({
         mutationFn: updateTask,
         onSuccess: () => {
-            queryClient.invalidateQueries(["tasks"]);
+            queryClient.invalidateQueries({ queryKey: ["tasks"] });
         },
     })
 

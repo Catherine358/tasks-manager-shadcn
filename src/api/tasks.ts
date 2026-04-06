@@ -109,7 +109,7 @@ export const getTasks = async (): Promise<Task[]> => {
     return [...tasks];
 };
 
-export const updateTask = async (id: number, data: Partial<Task>): Promise<Task> => {
+export const updateTask = async ({ id, data }: {id: number, data: Partial<Task>}): Promise<Task> => {
     await delay(500);
     const task = tasks.find((task) => task.id === id);
     if (!task) {
