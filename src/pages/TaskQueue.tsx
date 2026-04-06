@@ -26,7 +26,7 @@ export default function TaskQueue() {
     return (
         <main className="p-6 flex flex-col gap-6">
             <h1 className="text-2xl font-semibold">Task Queue</h1>
-            <section className="flex justify-center gap-4">
+            <section className="flex justify-center gap-4 flex-wrap">
                 <TaskCounter tasks={tasks} />
                 <WeatherWidget />
             </section>

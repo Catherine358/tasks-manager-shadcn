@@ -14,7 +14,8 @@ const fetchWeather = async (): Promise<Weather> => {
                     `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
                 );
                 if (!response.ok) {
-                    throw new Error('Failed to fetch weather');
+                    reject('Failed to fetch weather');
+                    return;
                 }
                 const res = await response.json();
                 const currentWeather = res.current_weather;
