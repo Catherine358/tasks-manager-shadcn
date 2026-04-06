@@ -3,15 +3,17 @@ import { getTasks } from '../api/tasks.ts';
 import TaskList from '../components/TaskList.tsx';
 import TaskStatistics from '../components/TaskStatistics.tsx';
 import TaskCounter from '../components/TaskCounter.tsx';
-import { useSearchParams } from 'react-router-dom';
+import {useNavigate, useSearchParams} from 'react-router-dom';
 import FilterBar, { type FilterKeys } from '../components/FilterBar.tsx';
 import WeatherWidget from '../components/WeatherWidget.tsx';
+import {Button} from "@/components/ui/button.tsx";
 
 export default function TaskQueue() {
   const { data: tasks = [] } = useQuery({
     queryKey: ['tasks'],
     queryFn: getTasks,
   });
+    const navigate = useNavigate();
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -20,6 +22,12 @@ export default function TaskQueue() {
   const handleFilterChange = (filter: FilterKeys) => {
     setSearchParams({ filter });
   };
+
+    const startQueue = () => {
+        if (tasks.length > 0) {
+            navigate(`/task/${tasks[0].id}`);
+        }
+    };
 
   const filteredTasks =
     filter === 'all' ? tasks : tasks.filter((task) => task.status === filter);
@@ -38,6 +46,9 @@ export default function TaskQueue() {
       <section className="flex justify-start">
         <TaskStatistics tasks={tasks} />
       </section>
+        <section className="flex justify-start">
+            <Button variant="outline" onClick={startQueue}>Start queue from the beginning</Button>
+        </section>
     </main>
   );
 }

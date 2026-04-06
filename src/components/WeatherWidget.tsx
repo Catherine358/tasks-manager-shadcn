@@ -6,13 +6,13 @@ export default function WeatherWidget() {
 
   if (isLoading)
     return (
-      <Card className="flex items-center gap-2.5 rounded-xl p-4 text-sm text-gray-700 shadow-sm min-w-[120px]">
+      <Card className="border-0 relative flex flex-col items-center gap-4 rounded-xl px-6 py-4 shadow-lg bg-white">
         <CardContent>Loading weather...</CardContent>
       </Card>
     );
   if (error)
     return (
-      <Card className="flex items-center gap-2.5 rounded-xl p-4 text-sm text-gray-700 shadow-sm min-w-[120px]">
+      <Card className="border-0 relative flex flex-col items-center gap-4 rounded-xl px-6 py-4 shadow-lg bg-white">
         <CardContent>Weather unavailable</CardContent>
       </Card>
     );
