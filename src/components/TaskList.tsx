@@ -1,5 +1,3 @@
-
-
 import type {Task} from "../api/tasks.ts";
 import TaskItem from "./TaskItem.tsx";
 

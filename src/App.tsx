@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import './App.css'
 import TaskQueue from "./pages/TaskQueue.tsx";
+import TaskDetails from "./pages/TaskDetails.tsx";
+import './App.css'
 
 function App() {
 
@@ -8,7 +9,7 @@ function App() {
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<TaskQueue />} />
-            {/*<Route path="/task/:id" element={<TaskDetails />} />*/}
+            <Route path="/task/:id" element={<TaskDetails />} />
         </Routes>
     </BrowserRouter>
   )

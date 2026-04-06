@@ -1,4 +1,3 @@
-
 import {useQuery} from "@tanstack/react-query";
 import {getTasks} from "../api/tasks.ts";
 import TaskList from "../components/TaskList.tsx";
@@ -7,11 +6,9 @@ import TaskCounter from "../components/TaskCounter.tsx";
 import {useSearchParams} from "react-router-dom";
 import FilterBar, {type FilterKeys} from "../components/FilterBar.tsx";
 
-
-
 export default function TaskQueue() {
     const { data: tasks = [] } = useQuery({
-        queryKey: "tasks",
+        queryKey: ["tasks"],
         queryFn: getTasks
     });
 

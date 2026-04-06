@@ -8,7 +8,7 @@ export interface Task {
     address: string
 }
 
-let tasks: Task[] = [
+const tasks: Task[] = [
     {
         id: 1,
         contractNumber: "CN-102394",
